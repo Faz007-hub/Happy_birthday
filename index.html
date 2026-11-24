@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#6b21a8" />
+  <title>Happy Birthday Motu! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== PROGRESS INDICATOR ========== -->
+  <div class="progress-indicator" id="progressIndicator">
+    <div class="progress-dot active" data-stage="1" title="Gift Box"></div>
+    <div class="progress-dot" data-stage="2" title="Birthday Reveal"></div>
+    <div class="progress-dot" data-stage="3" title="Memory Wall"></div>
+    <div class="progress-dot" data-stage="4" title="Cute Moment"></div>
+    <div class="progress-dot" data-stage="5" title="Celebration"></div>
+  </div>
+
+  <!-- ========== MUSIC CONTROL ========== -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle Music">
+    <span class="music-icon">🎵</span>
+    <span class="music-label">Music</span>
+  </button>
+
+  <!-- ========== FLOATING AMBIENT ELEMENTS ========== -->
+  <div class="ambient-layer" id="ambientLayer"></div>
+
+  <!-- ========== SPARKLE CURSOR ========== -->
+  <canvas id="sparkleCanvas" class="sparkle-canvas"></canvas>
+
+  <!-- =====================================================
+       STAGE 1 — THE SEALED GIFT BOX SURPRISE
+  ====================================================== -->
+  <section class="stage active" id="stage1">
+    <div class="stage1-bg">
+      <!-- Fairy lights -->
+      <div class="fairy-lights" id="fairyLights"></div>
+
+      <div class="stage1-content">
+        <div class="greeting-text">
+          <p class="hey-text">Hey Motuuu! 🎀</p>
+          <p class="subtitle-text">I have something special for you...</p>
+        </div>
+
+        <!-- GIFT BOX -->
+        <div class="gift-box-container" id="giftBoxContainer">
+          <div class="gift-box" id="giftBox">
+            <!-- Lid -->
+            <div class="gift-lid" id="giftLid">
+              <div class="lid-ribbon-h"></div>
+              <div class="golden-bow">
+                <div class="bow-left"></div>
+                <div class="bow-right"></div>
+                <div class="bow-center"></div>
+                <div class="bow-tail-left"></div>
+                <div class="bow-tail-right"></div>
+              </div>
+            </div>
+            <!-- Box body -->
+            <div class="gift-body" id="giftBody">
+              <div class="ribbon-v"></div>
+              <div class="ribbon-h"></div>
+              <!-- Glow that comes out -->
+              <div class="box-glow" id="boxGlow"></div>
+            </div>
+          </div>
+
+          <!-- Bhaiyoo popping out (hidden initially) -->
+          <div class="bhaiyoo-popup" id="bhaiyooPopup">
+            <div class="character-bhaiyoo-wave">
+              <!-- SVG Bhaiyoo character -->
+              <svg viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" class="char-svg">
+                <!-- Body / hoodie -->
+                <rect x="25" y="90" width="70" height="80" rx="20" fill="#3b0764"/>
+                <rect x="20" y="95" width="25" height="50" rx="12" fill="#3b0764"/>
+                <rect x="75" y="95" width="25" height="50" rx="12" fill="#3b0764"/>
+                <!-- Hoodie pocket -->
+                <rect x="42" y="130" width="36" height="22" rx="10" fill="#4c1d95"/>
+                <!-- Hoodie strings -->
+                <circle cx="52" cy="108" r="3" fill="#7c3aed"/>
+                <circle cx="68" cy="108" r="3" fill="#7c3aed"/>
+                <!-- Head -->
+                <ellipse cx="60" cy="68" rx="32" ry="30" fill="#f9d4a0"/>
+                <!-- Hair -->
+                <ellipse cx="60" cy="45" rx="32" ry="16" fill="#1e1b4b"/>
+                <rect x="28" y="40" width="64" height="20" rx="8" fill="#1e1b4b"/>
+                <!-- Eyes -->
+                <ellipse cx="48" cy="68" rx="7" ry="8" fill="white"/>
+                <ellipse cx="72" cy="68" rx="7" ry="8" fill="white"/>
+                <circle cx="50" cy="69" r="4.5" fill="#1e1b4b"/>
+                <circle cx="74" cy="69" r="4.5" fill="#1e1b4b"/>
+                <circle cx="51.5" cy="67.5" r="1.5" fill="white"/>
+                <circle cx="75.5" cy="67.5" r="1.5" fill="white"/>
+                <!-- Eyebrows - slightly naughty -->
+                <path d="M41 59 Q48 55 55 59" stroke="#1e1b4b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M65 59 Q72 55 79 59" stroke="#1e1b4b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Naughty smirk -->
+                <path d="M48 82 Q60 92 73 82" stroke="#c0392b" stroke-width="2.5" fill="#e74c3c" stroke-linecap="round"/>
+                <!-- Cheeks -->
+                <ellipse cx="40" cy="77" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+                <ellipse cx="80" cy="77" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+                <!-- Waving arm - raised -->
+                <rect x="90" y="75" width="22" height="12" rx="6" fill="#3b0764" transform="rotate(-40 90 75)"/>
+                <ellipse cx="108" cy="58" rx="10" ry="10" fill="#f9d4a0"/>
+                <!-- Hand wave fingers hint -->
+                <ellipse cx="112" cy="52" rx="4" ry="6" fill="#f9d4a0"/>
+              </svg>
+            </div>
+            <div class="popup-bubble">
+              <p class="popup-line1">Surpriseee Motuuu! 😂</p>
+              <p class="popup-line2">It's your Bhaiyoo!</p>
+            </div>
+          </div>
+
+          <!-- Burst particles container -->
+          <div class="burst-container" id="burstContainer"></div>
+        </div>
+
+        <p class="tap-label" id="tapLabel">A Little Surprise For You 🎁</p>
+        <p class="tap-hint" id="tapHint">✨ Tap the gift box to open it! ✨</p>
+
+        <!-- Button shown after open -->
+        <button class="cta-btn hidden" id="stage1Btn" onclick="goToStage(2)">
+          Let's See What's Inside! ✨
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       STAGE 2 — THE GRAND BIRTHDAY REVEAL
+  ====================================================== -->
+  <section class="stage" id="stage2">
+    <div class="stage2-bg">
+      <div class="stage2-content">
+        <!-- Dramatic reveal sequence -->
+        <div class="reveal-teaser" id="revealTeaser">
+          <p class="teaser-text">Waittt Motu! Someone's birthday is today... 👀</p>
+        </div>
+
+        <div class="reveal-main hidden" id="revealMain">
+          <div class="its-your-day">
+            <span class="its-text">IT'S YOUR DAY,</span>
+            <span class="name-text">KARSHI!</span>
+            <span class="cake-emoji-big">🎂</span>
+          </div>
+
+          <h1 class="hbd-heading">HAPPY BIRTHDAY<br/><span class="hbd-motu">MOTU!</span></h1>
+
+          <!-- Animated Cake -->
+          <div class="cake-scene">
+            <!-- Characters -->
+            <div class="char-left bhaiyoo-celebrate">
+              <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" class="char-svg-sm">
+                <rect x="20" y="78" width="60" height="65" rx="18" fill="#3b0764"/>
+                <rect x="14" y="82" width="22" height="40" rx="10" fill="#3b0764"/>
+                <rect x="64" y="82" width="22" height="40" rx="10" fill="#3b0764"/>
+                <ellipse cx="50" cy="57" rx="27" ry="25" fill="#f9d4a0"/>
+                <ellipse cx="50" cy="37" rx="27" ry="13" fill="#1e1b4b"/>
+                <rect x="23" y="30" width="54" height="17" rx="7" fill="#1e1b4b"/>
+                <ellipse cx="40" cy="57" rx="6" ry="7" fill="white"/>
+                <ellipse cx="60" cy="57" rx="6" ry="7" fill="white"/>
+                <circle cx="41.5" cy="58" r="4" fill="#1e1b4b"/>
+                <circle cx="61.5" cy="58" r="4" fill="#1e1b4b"/>
+                <circle cx="43" cy="56.5" r="1.3" fill="white"/>
+                <circle cx="63" cy="56.5" r="1.3" fill="white"/>
+                <path d="M40 69 Q50 78 61 69" stroke="#c0392b" stroke-width="2" fill="#e74c3c" stroke-linecap="round"/>
+                <ellipse cx="33" cy="65" rx="6" ry="4" fill="#f9a8d4" opacity="0.5"/>
+                <ellipse cx="67" cy="65" rx="6" ry="4" fill="#f9a8d4" opacity="0.5"/>
+                <!-- Both arms raised celebrating -->
+                <rect x="2" y="65" width="20" height="10" rx="5" fill="#3b0764" transform="rotate(40 2 65)"/>
+                <rect x="78" y="65" width="20" height="10" rx="5" fill="#3b0764" transform="rotate(-40 98 65)"/>
+              </svg>
+              <p class="char-label">Bhaiyoo</p>
+            </div>
+
+            <!-- Cake SVG -->
+            <div class="cake-svg-wrap">
+              <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" class="cake-svg">
+                <!-- Plate -->
+                <ellipse cx="80" cy="185" rx="70" ry="12" fill="#f3e8ff"/>
+                <!-- Bottom tier -->
+                <rect x="20" y="140" width="120" height="45" rx="12" fill="#e879f9"/>
+                <rect x="20" y="140" width="120" height="10" rx="6" fill="#f0abfc"/>
+                <!-- Decoration dots bottom -->
+                <circle cx="40" cy="162" r="5" fill="white" opacity="0.7"/>
+                <circle cx="60" cy="155" r="4" fill="white" opacity="0.6"/>
+                <circle cx="80" cy="162" r="5" fill="white" opacity="0.7"/>
+                <circle cx="100" cy="155" r="4" fill="white" opacity="0.6"/>
+                <circle cx="120" cy="162" r="5" fill="white" opacity="0.7"/>
+                <!-- Middle tier -->
+                <rect x="30" y="100" width="100" height="42" rx="10" fill="#c084fc"/>
+                <rect x="30" y="100" width="100" height="8" rx="5" fill="#d8b4fe"/>
+                <!-- Decoration middle -->
+                <circle cx="50" cy="120" r="4.5" fill="white" opacity="0.6"/>
+                <circle cx="70" cy="114" r="3.5" fill="white" opacity="0.5"/>
+                <circle cx="90" cy="120" r="4.5" fill="white" opacity="0.6"/>
+                <circle cx="110" cy="114" r="3.5" fill="white" opacity="0.5"/>
+                <!-- Top tier -->
+                <rect x="45" y="68" width="70" height="34" rx="8" fill="#a855f7"/>
+                <rect x="45" y="68" width="70" height="7" rx="4" fill="#c084fc"/>
+                <!-- Frosting drips -->
+                <path d="M45 68 Q50 60 55 68 Q60 60 65 68 Q70 60 75 68 Q80 60 85 68 Q90 60 95 68 Q100 60 105 68 Q110 60 115 68" stroke="#f0abfc" stroke-width="5" fill="none"/>
+                <!-- Candles -->
+                <rect x="62" y="42" width="8" height="28" rx="3" fill="#fbbf24"/>
+                <rect x="77" y="38" width="8" height="32" rx="3" fill="#f472b6"/>
+                <rect x="92" y="42" width="8" height="28" rx="3" fill="#34d399"/>
+                <!-- Flames -->
+                <ellipse cx="66" cy="39" rx="5" ry="8" fill="#fde68a" class="flame-anim"/>
+                <ellipse cx="81" cy="34" rx="5" ry="9" fill="#fde68a" class="flame-anim" style="animation-delay:0.3s"/>
+                <ellipse cx="96" cy="39" rx="5" ry="8" fill="#fde68a" class="flame-anim" style="animation-delay:0.6s"/>
+                <!-- Stars on cake -->
+                <text x="52" y="132" font-size="10" fill="gold">★</text>
+                <text x="102" y="128" font-size="10" fill="gold">★</text>
+                <text x="55" y="118" font-size="8" fill="gold">✦</text>
+              </svg>
+            </div>
+
+            <!-- Motu character -->
+            <div class="char-right motu-celebrate">
+              <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg" class="char-svg-sm">
+                <!-- Dress -->
+                <path d="M20 90 Q15 140 50 148 Q85 140 80 90 Z" fill="#c084fc"/>
+                <rect x="30" y="80" width="40" height="30" rx="10" fill="#c084fc"/>
+                <!-- Belt/waist detail -->
+                <rect x="25" y="102" width="50" height="7" rx="4" fill="#a855f7"/>
+                <!-- Arms raised celebrating -->
+                <rect x="5" y="75" width="20" height="10" rx="5" fill="#c084fc" transform="rotate(45 5 75)"/>
+                <rect x="75" y="75" width="20" height="10" rx="5" fill="#c084fc" transform="rotate(-45 95 75)"/>
+                <!-- Neck -->
+                <rect x="43" y="68" width="14" height="16" rx="6" fill="#f9d4a0"/>
+                <!-- Head -->
+                <ellipse cx="50" cy="52" rx="27" ry="26" fill="#f9d4a0"/>
+                <!-- Long flowing hair -->
+                <ellipse cx="50" cy="34" rx="27" ry="12" fill="#6b21a8"/>
+                <rect x="23" y="28" width="54" height="20" rx="8" fill="#6b21a8"/>
+                <path d="M23 42 Q16 70 22 90" stroke="#6b21a8" stroke-width="14" fill="none" stroke-linecap="round"/>
+                <path d="M77 42 Q84 70 78 90" stroke="#6b21a8" stroke-width="14" fill="none" stroke-linecap="round"/>
+                <!-- Hair detail -->
+                <path d="M23 28 Q17 50 20 70" stroke="#7c3aed" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M77 28 Q83 50 80 70" stroke="#7c3aed" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <!-- Hair accessory -->
+                <circle cx="68" cy="30" r="6" fill="#f472b6"/>
+                <circle cx="68" cy="30" r="3" fill="#fbbf24"/>
+                <!-- Eyes - happy crescents -->
+                <path d="M36 50 Q42 44 48 50" stroke="#1e1b4b" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M52 50 Q58 44 64 50" stroke="#1e1b4b" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Smile -->
+                <path d="M38 62 Q50 72 62 62" stroke="#c0392b" stroke-width="2" fill="#e74c3c" stroke-linecap="round"/>
+                <!-- Cheeks -->
+                <ellipse cx="34" cy="58" rx="6" ry="4" fill="#f9a8d4" opacity="0.6"/>
+                <ellipse cx="66" cy="58" rx="6" ry="4" fill="#f9a8d4" opacity="0.6"/>
+              </svg>
+              <p class="char-label">Motu 🌸</p>
+            </div>
+          </div>
+
+          <button class="cta-btn" id="stage2Btn" onclick="goToStage(3)">
+            Continue to Your Special Messages 💌
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       STAGE 3 — BIRTHDAY MEMORY WALL
+  ====================================================== -->
+  <section class="stage" id="stage3">
+    <div class="stage3-bg">
+      <div class="stage3-content">
+        <div class="memory-heading">
+          <h2 class="memory-title">7 Little Things For My Motu 💜</h2>
+          <p class="memory-subtitle">A few little messages from your Bhaiyoo...</p>
+        </div>
+
+        <div class="memory-wall" id="memoryWall">
+
+          <!-- CARD 1 -->
+          <div class="memory-card card-1" data-delay="0">
+            <div class="card-deco-top">
+              <span>🎂</span><span>✨</span><span>🎂</span>
+            </div>
+            <div class="card-number">01</div>
+            <h3 class="card-title">A Special Birthday Wish 🎂</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              Happy Birthday, Motuuu! ❤️<br/><br/>
+              May your special day be filled with endless happiness, laughter and beautiful memories. You deserve all the happiness in the world!
+            </p>
+            <div class="card-deco-bottom">
+              <span class="deco-star">⭐</span>
+              <span class="deco-star" style="animation-delay:0.3s">⭐</span>
+              <span class="deco-star" style="animation-delay:0.6s">⭐</span>
+            </div>
+            <div class="card-stamp">HBD</div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="memory-card card-2" data-delay="1">
+            <div class="card-char-mini">
+              <!-- Mini Bhaiyoo + Motu -->
+              <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mini Bhaiyoo -->
+                <rect x="2" y="28" width="30" height="30" rx="8" fill="#3b0764"/>
+                <ellipse cx="17" cy="22" rx="13" ry="12" fill="#f9d4a0"/>
+                <ellipse cx="17" cy="13" rx="13" ry="6" fill="#1e1b4b"/>
+                <circle cx="12" cy="22" r="3" fill="white"/><circle cx="13" cy="22" r="1.8" fill="#1e1b4b"/>
+                <circle cx="22" cy="22" r="3" fill="white"/><circle cx="23" cy="22" r="1.8" fill="#1e1b4b"/>
+                <path d="M12 30 Q17 35 23 30" stroke="#c0392b" stroke-width="1.5" fill="#e74c3c" stroke-linecap="round"/>
+                <!-- Mini Motu -->
+                <path d="M50 30 Q46 55 65 58 Q84 55 80 30 Z" fill="#c084fc"/>
+                <rect x="53" y="22" width="22" height="16" rx="7" fill="#c084fc"/>
+                <ellipse cx="64" cy="17" rx="13" ry="12" fill="#f9d4a0"/>
+                <ellipse cx="64" cy="8" rx="13" ry="6" fill="#6b21a8"/>
+                <path d="M52 10 Q47 25 50 35" stroke="#6b21a8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <path d="M76 10 Q81 25 78 35" stroke="#6b21a8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <path d="M56 15 Q62 10 70 15" stroke="#1e1b4b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M56 22 Q64 28 72 22" stroke="#c0392b" stroke-width="1.5" fill="#e74c3c" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-number">02</div>
+            <h3 class="card-title">My Best Sister ❤️</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              You are the best sister in my life, and I'm genuinely lucky to have a friend like you.
+            </p>
+            <div class="polaroid-tape"></div>
+            <div class="heart-deco">❤️ 💜 ❤️</div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="memory-card card-3" data-delay="2">
+            <div class="card-deco-top">
+              <span>🥹</span><span>💫</span><span>🥹</span>
+            </div>
+            <div class="card-number">03</div>
+            <h3 class="card-title">Forever My Motu 🥹</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              No matter how much time passes, you will always be my Motu. Some bonds are simply too special to change.
+            </p>
+            <div class="infinity-deco">∞</div>
+            <div class="card-stamp-round">FOREVER</div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div class="memory-card card-4" data-delay="3">
+            <div class="card-deco-top">
+              <span>✨</span><span>⭐</span><span>✨</span>
+            </div>
+            <div class="card-number">04</div>
+            <h3 class="card-title">My Favourite Person ✨</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              You are not just my best friend; you are like a sister I never want to lose. Thank you for being you!
+            </p>
+            <div class="card-deco-bottom">
+              <span>💖</span><span>🌟</span><span>💖</span>
+            </div>
+          </div>
+
+          <!-- CARD 5 -->
+          <div class="memory-card card-5" data-delay="4">
+            <div class="smile-deco">😊</div>
+            <div class="card-number">05</div>
+            <h3 class="card-title">Never Stop Smiling 💜</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              Never let anything take away your beautiful smile. Keep shining, keep growing and keep being your crazy self!
+            </p>
+            <div class="shine-line"></div>
+            <div class="card-stamp">SHINE ✨</div>
+          </div>
+
+          <!-- CARD 6 -->
+          <div class="memory-card card-6" data-delay="5">
+            <div class="card-char-mini">
+              <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mini Bhaiyoo laughing -->
+                <rect x="2" y="28" width="30" height="30" rx="8" fill="#3b0764"/>
+                <ellipse cx="17" cy="22" rx="13" ry="12" fill="#f9d4a0"/>
+                <ellipse cx="17" cy="13" rx="13" ry="6" fill="#1e1b4b"/>
+                <path d="M11 20 Q14 16 17 20" stroke="#1e1b4b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M17 20 Q20 16 23 20" stroke="#1e1b4b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <!-- Big laugh mouth -->
+                <path d="M11 28 Q17 36 23 28" stroke="#1e1b4b" stroke-width="1.5" fill="#fbbf24" stroke-linecap="round"/>
+                <ellipse cx="32" cy="26" rx="6" ry="4" fill="#f9a8d4" opacity="0.5"/>
+                <!-- Teasing arm pointing -->
+                <rect x="30" y="22" width="16" height="6" rx="3" fill="#3b0764"/>
+                <!-- Mini Motu annoyed -->
+                <path d="M50 30 Q46 55 65 58 Q84 55 80 30 Z" fill="#c084fc"/>
+                <rect x="53" y="22" width="22" height="16" rx="7" fill="#c084fc"/>
+                <ellipse cx="64" cy="17" rx="13" ry="12" fill="#f9d4a0"/>
+                <ellipse cx="64" cy="8" rx="13" ry="6" fill="#6b21a8"/>
+                <path d="M52 10 Q47 25 50 35" stroke="#6b21a8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <path d="M76 10 Q81 25 78 35" stroke="#6b21a8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <!-- Annoyed expression -->
+                <path d="M58 14 Q61 11 67 14" stroke="#1e1b4b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M58 20 Q62 20 67 20" stroke="#1e1b4b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <!-- Wavy mouth (ugh) -->
+                <path d="M58 26 Q61 23 64 26 Q67 29 70 26" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-number">06</div>
+            <h3 class="card-title">A Lifetime of Annoying You 😂</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              No matter how much we fight, argue or annoy each other, I'll always be there to tease you and make you laugh!
+            </p>
+            <div class="ha-ha-deco">Ha! Ha! Ha!</div>
+          </div>
+
+          <!-- CARD 7 -->
+          <div class="memory-card card-7" data-delay="6">
+            <div class="card-deco-top">
+              <span>🤲</span><span>🌙</span><span>⭐</span>
+            </div>
+            <div class="card-number">07</div>
+            <h3 class="card-title">Lots of Duas For You 🤲</h3>
+            <div class="card-divider"></div>
+            <p class="card-message">
+              May Allah bless you with happiness, success, good health and everything your heart wishes for. May all your dreams come true. Ameen! 🤍
+            </p>
+            <div class="dua-deco">آمین</div>
+            <div class="card-deco-bottom">
+              <span>🌙</span><span>⭐</span><span>🌙</span>
+            </div>
+          </div>
+
+        </div><!-- /memory-wall -->
+
+        <div class="memory-cta">
+          <button class="cta-btn" onclick="goToStage(4)">One More Surprise Awaits You! 🎁</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       STAGE 4 — CUTE BHAIYOO & MOTU MOMENT
+  ====================================================== -->
+  <section class="stage" id="stage4">
+    <div class="stage4-bg">
+      <div class="stage4-content">
+
+        <p class="stage4-teaser" id="stage4Teaser">One Last Thing, Motuuu...</p>
+
+        <div class="stage4-reveal hidden" id="stage4Reveal">
+          <div class="stage4-scene">
+            <!-- Bhaiyoo with gift -->
+            <div class="bhaiyoo-gift-char">
+              <svg viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg" class="char-svg">
+                <!-- Body -->
+                <rect x="22" y="92" width="68" height="78" rx="20" fill="#3b0764"/>
+                <rect x="16" y="97" width="24" height="48" rx="12" fill="#3b0764"/>
+                <rect x="80" y="97" width="24" height="48" rx="12" fill="#3b0764"/>
+                <!-- Hoodie pocket -->
+                <rect x="40" y="130" width="38" height="22" rx="10" fill="#4c1d95"/>
+                <!-- Head -->
+                <ellipse cx="60" cy="68" rx="30" ry="28" fill="#f9d4a0"/>
+                <!-- Hair -->
+                <ellipse cx="60" cy="45" rx="30" ry="13" fill="#1e1b4b"/>
+                <rect x="30" y="40" width="60" height="18" rx="7" fill="#1e1b4b"/>
+                <!-- Eyes - squinting/laughing -->
+                <path d="M43 66 Q49 60 55 66" stroke="#1e1b4b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M65 66 Q71 60 77 66" stroke="#1e1b4b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Eyebrows -->
+                <path d="M43 58 Q49 54 55 58" stroke="#1e1b4b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M65 58 Q71 54 77 58" stroke="#1e1b4b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <!-- Big grin -->
+                <path d="M44 78 Q60 92 76 78" stroke="#c0392b" stroke-width="2" fill="#e74c3c" stroke-linecap="round"/>
+                <!-- Cheeks -->
+                <ellipse cx="38" cy="74" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+                <ellipse cx="82" cy="74" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+                <!-- Arm holding gift - LEFT arm extended -->
+                <rect x="2" y="100" width="22" height="12" rx="6" fill="#3b0764" transform="rotate(10 2 100)"/>
+                <!-- Gift box in hand -->
+                <rect x="0" y="118" width="40" height="34" rx="6" fill="#f472b6"/>
+                <rect x="0" y="118" width="40" height="8" rx="4" fill="#f9a8d4"/>
+                <rect x="18" y="118" width="4" height="34" fill="#fbbf24"/>
+                <rect x="0" y="130" width="40" height="4" fill="#fbbf24"/>
+                <!-- Bow on gift -->
+                <path d="M20 118 Q14 110 8 114 Q14 118 20 118" fill="#fbbf24"/>
+                <path d="M20 118 Q26 110 32 114 Q26 118 20 118" fill="#fbbf24"/>
+                <circle cx="20" cy="118" r="3" fill="#fde68a"/>
+                <!-- Shrug arm - right, slightly raised -->
+                <rect x="94" y="97" width="20" height="10" rx="5" fill="#3b0764" transform="rotate(-20 94 97)"/>
+              </svg>
+              <div class="shrug-bubble" id="shrugBubble">😂</div>
+            </div>
+
+            <!-- Mini cake -->
+            <div class="mini-cake-stage4">
+              <svg viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" class="mini-cake-svg">
+                <ellipse cx="40" cy="94" rx="34" ry="6" fill="#f3e8ff"/>
+                <rect x="10" y="68" width="60" height="26" rx="8" fill="#e879f9"/>
+                <rect x="10" y="68" width="60" height="6" rx="3" fill="#f0abfc"/>
+                <rect x="18" y="45" width="44" height="25" rx="6" fill="#c084fc"/>
+                <rect x="18" y="45" width="44" height="5" rx="3" fill="#d8b4fe"/>
+                <rect x="28" y="30" width="24" height="17" rx="5" fill="#a855f7"/>
+                <path d="M28 30 Q32 24 36 30 Q40 24 44 30 Q48 24 52 30" stroke="#f0abfc" stroke-width="3" fill="none"/>
+                <rect x="36" y="16" width="5" height="16" rx="2" fill="#fbbf24"/>
+                <rect x="45" y="13" width="5" height="19" rx="2" fill="#f472b6"/>
+                <ellipse cx="38.5" cy="13" rx="3" ry="5" fill="#fde68a" class="flame-anim"/>
+                <ellipse cx="47.5" cy="10" rx="3" ry="5" fill="#fde68a" class="flame-anim" style="animation-delay:0.4s"/>
+              </svg>
+            </div>
+
+            <!-- Motu character -->
+            <div class="motu-gift-char">
+              <svg viewBox="0 0 100 170" xmlns="http://www.w3.org/2000/svg" class="char-svg">
+                <!-- Dress -->
+                <path d="M18 95 Q14 148 50 155 Q86 148 82 95 Z" fill="#c084fc"/>
+                <rect x="28" y="82" width="44" height="32" rx="12" fill="#c084fc"/>
+                <rect x="23" y="108" width="54" height="8" rx="4" fill="#a855f7"/>
+                <!-- Dress detail -->
+                <circle cx="50" cy="130" r="4" fill="white" opacity="0.4"/>
+                <circle cx="38" cy="140" r="3" fill="white" opacity="0.3"/>
+                <circle cx="62" cy="140" r="3" fill="white" opacity="0.3"/>
+                <!-- Arms - excited -->
+                <rect x="6" y="85" width="22" height="11" rx="6" fill="#c084fc" transform="rotate(30 6 85)"/>
+                <rect x="72" y="85" width="22" height="11" rx="6" fill="#c084fc" transform="rotate(-30 94 85)"/>
+                <!-- Neck -->
+                <rect x="43" y="70" width="14" height="16" rx="6" fill="#f9d4a0"/>
+                <!-- Head -->
+                <ellipse cx="50" cy="55" rx="28" ry="26" fill="#f9d4a0"/>
+                <!-- Long hair -->
+                <ellipse cx="50" cy="34" rx="28" ry="13" fill="#6b21a8"/>
+                <rect x="22" y="28" width="56" height="22" rx="9" fill="#6b21a8"/>
+                <path d="M22 44 Q14 72 20 95" stroke="#6b21a8" stroke-width="14" fill="none" stroke-linecap="round"/>
+                <path d="M78 44 Q86 72 80 95" stroke="#6b21a8" stroke-width="14" fill="none" stroke-linecap="round"/>
+                <!-- Hair accessory -->
+                <circle cx="70" cy="32" r="7" fill="#f472b6"/>
+                <circle cx="70" cy="32" r="3.5" fill="#fbbf24"/>
+                <!-- Eyes surprised/happy -->
+                <ellipse cx="38" cy="54" rx="7" ry="8" fill="white"/>
+                <ellipse cx="62" cy="54" rx="7" ry="8" fill="white"/>
+                <circle cx="39.5" cy="55" r="4.5" fill="#1e1b4b"/>
+                <circle cx="63.5" cy="55" r="4.5" fill="#1e1b4b"/>
+                <circle cx="41" cy="53.5" r="1.5" fill="white"/>
+                <circle cx="65" cy="53.5" r="1.5" fill="white"/>
+                <!-- Happy open mouth -->
+                <path d="M37 67 Q50 78 63 67" stroke="#c0392b" stroke-width="2" fill="#e74c3c" stroke-linecap="round"/>
+                <!-- Cheeks -->
+                <ellipse cx="30" cy="61" rx="7" ry="5" fill="#f9a8d4" opacity="0.6"/>
+                <ellipse cx="70" cy="61" rx="7" ry="5" fill="#f9a8d4" opacity="0.6"/>
+              </svg>
+            </div>
+          </div><!-- /stage4-scene -->
+
+          <div class="stage4-messages">
+            <p class="s4-msg s4-msg-1">"Your Bhaiyoo is always going to annoy you, tease you and make you laugh! 😂"</p>
+            <p class="s4-msg s4-msg-2">"That's a lifetime subscription. No cancellation allowed!"</p>
+            <p class="s4-msg s4-msg-3 highlight-msg">You are the best sister and best friend anyone could ask for! 💜</p>
+          </div>
+
+          <button class="cta-btn" onclick="goToStage(5)">Let's Celebrate Together! 🎉</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       STAGE 5 — THE GRAND FINAL BIRTHDAY CELEBRATION
+  ====================================================== -->
+  <section class="stage" id="stage5">
+    <div class="stage5-bg">
+      <!-- Fireworks canvas -->
+      <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+
+      <div class="stage5-content">
+        <div class="final-heading-wrap">
+          <h1 class="final-heading">HAPPY BIRTHDAY</h1>
+          <h1 class="final-heading-name">KARSHI (MOTU)!</h1>
+          <span class="final-cake-emoji">🎂</span>
+        </div>
+
+        <!-- Big celebration scene -->
+        <div class="final-scene">
+          <!-- Bhaiyoo celebrating -->
+          <div class="final-bhaiyoo">
+            <svg viewBox="0 0 110 170" xmlns="http://www.w3.org/2000/svg" class="char-svg">
+              <rect x="20" y="88" width="68" height="75" rx="20" fill="#3b0764"/>
+              <rect x="14" y="92" width="24" height="47" rx="12" fill="#3b0764"/>
+              <rect x="72" y="92" width="24" height="47" rx="12" fill="#3b0764"/>
+              <rect x="38" y="126" width="38" height="20" rx="10" fill="#4c1d95"/>
+              <ellipse cx="57" cy="66" rx="30" ry="28" fill="#f9d4a0"/>
+              <ellipse cx="57" cy="43" rx="30" ry="13" fill="#1e1b4b"/>
+              <rect x="27" y="38" width="60" height="18" rx="7" fill="#1e1b4b"/>
+              <!-- Big happy eyes -->
+              <ellipse cx="45" cy="66" rx="7" ry="8" fill="white"/>
+              <ellipse cx="69" cy="66" rx="7" ry="8" fill="white"/>
+              <circle cx="46.5" cy="67" r="4.5" fill="#1e1b4b"/>
+              <circle cx="70.5" cy="67" r="4.5" fill="#1e1b4b"/>
+              <circle cx="48" cy="65.5" r="1.5" fill="white"/>
+              <circle cx="72" cy="65.5" r="1.5" fill="white"/>
+              <path d="M42 78 Q57 90 72 78" stroke="#c0392b" stroke-width="2" fill="#e74c3c" stroke-linecap="round"/>
+              <ellipse cx="36" cy="73" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+              <ellipse cx="78" cy="73" rx="7" ry="5" fill="#f9a8d4" opacity="0.5"/>
+              <!-- Both arms raised in celebration -->
+              <rect x="0" y="68" width="20" height="10" rx="5" fill="#3b0764" transform="rotate(45 0 68)"/>
+              <rect x="90" y="68" width="20" height="10" rx="5" fill="#3b0764" transform="rotate(-45 110 68)"/>
+              <!-- Hands -->
+              <ellipse cx="8" cy="56" rx="9" ry="9" fill="#f9d4a0"/>
+              <ellipse cx="102" cy="56" rx="9" ry="9" fill="#f9d4a0"/>
+              <!-- Party hat -->
+              <polygon points="57,10 40,45 74,45" fill="#f472b6"/>
+              <circle cx="57" cy="10" r="4" fill="#fbbf24"/>
+              <line x1="40" y1="45" x2="74" y2="45" stroke="#fbbf24" stroke-width="3"/>
+            </svg>
+            <p class="char-label-final">Bhaiyoo 🎉</p>
+          </div>
+
+          <!-- Big Birthday Cake -->
+          <div class="final-cake">
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="big-cake-svg">
+              <!-- Plate -->
+              <ellipse cx="100" cy="230" rx="90" ry="14" fill="#f3e8ff"/>
+              <!-- Bottom tier -->
+              <rect x="15" y="168" width="170" height="62" rx="16" fill="#e879f9"/>
+              <rect x="15" y="168" width="170" height="14" rx="8" fill="#f0abfc"/>
+              <!-- Bottom drip frosting -->
+              <path d="M15 168 Q22 156 29 168 Q36 156 43 168 Q50 156 57 168 Q64 156 71 168 Q78 156 85 168 Q92 156 99 168 Q106 156 113 168 Q120 156 127 168 Q134 156 141 168 Q148 156 155 168 Q162 156 169 168 Q176 156 183 168 Q188 156 185 168" stroke="#f0abfc" stroke-width="6" fill="none"/>
+              <!-- Bottom deco -->
+              <circle cx="40" cy="192" r="7" fill="white" opacity="0.6"/>
+              <circle cx="70" cy="200" r="6" fill="white" opacity="0.5"/>
+              <circle cx="100" cy="192" r="7" fill="white" opacity="0.6"/>
+              <circle cx="130" cy="200" r="6" fill="white" opacity="0.5"/>
+              <circle cx="160" cy="192" r="7" fill="white" opacity="0.6"/>
+              <text x="38" y="215" font-size="12" fill="#7c3aed" font-family="Nunito" font-weight="bold">MOTU</text>
+              <text x="102" y="215" font-size="12" fill="#7c3aed" font-family="Nunito" font-weight="bold">🎂</text>
+              <!-- Middle tier -->
+              <rect x="30" y="115" width="140" height="55" rx="12" fill="#c084fc"/>
+              <rect x="30" y="115" width="140" height="11" rx="6" fill="#d8b4fe"/>
+              <path d="M30 115 Q38 103 46 115 Q54 103 62 115 Q70 103 78 115 Q86 103 94 115 Q102 103 110 115 Q118 103 126 115 Q134 103 142 115 Q150 103 158 115 Q166 103 170 115" stroke="#d8b4fe" stroke-width="5" fill="none"/>
+              <circle cx="55" cy="142" r="6" fill="white" opacity="0.5"/>
+              <circle cx="85" cy="135" r="5" fill="white" opacity="0.4"/>
+              <circle cx="115" cy="142" r="6" fill="white" opacity="0.5"/>
+              <circle cx="145" cy="135" r="5" fill="white" opacity="0.4"/>
+              <!-- Top tier -->
+              <rect x="52" y="72" width="96" height="45" rx="10" fill="#a855f7"/>
+              <rect x="52" y="72" width="96" height="9" rx="5" fill="#c084fc"/>
+              <path d="M52 72 Q59 60 66 72 Q73 60 80 72 Q87 60 94 72 Q101 60 108 72 Q115 60 122 72 Q129 60 136 72 Q143 60 148 72" stroke="#c084fc" stroke-width="4" fill="none"/>
+              <!-- Stars & decorations -->
+              <text x="62" y="98" font-size="13" fill="gold">★</text>
+              <text x="124" y="95" font-size="13" fill="gold">★</text>
+              <text x="90" y="92" font-size="10" fill="gold">✦</text>
+              <!-- Candles -->
+              <rect x="72" y="40" width="9" height="34" rx="4" fill="#fbbf24"/>
+              <rect x="88" y="34" width="9" height="40" rx="4" fill="#f472b6"/>
+              <rect x="104" y="40" width="9" height="34" rx="4" fill="#34d399"/>
+              <rect x="120" y="37" width="9" height="37" rx="4" fill="#60a5fa"/>
+              <!-- Candle stripes -->
+              <line x1="72" y1="50" x2="81" y2="50" stroke="white" stroke-width="2" opacity="0.5"/>
+              <line x1="88" y1="48" x2="97" y2="48" stroke="white" stroke-width="2" opacity="0.5"/>
+              <line x1="104" y1="50" x2="113" y2="50" stroke="white" stroke-width="2" opacity="0.5"/>
+              <line x1="120" y1="48" x2="129" y2="48" stroke="white" stroke-width="2" opacity="0.5"/>
+              <!-- Flames -->
+              <ellipse cx="76.5" cy="36" rx="6" ry="10" fill="#fde68a" class="flame-anim"/>
+              <ellipse cx="92.5" cy="29" rx="6" ry="11" fill="#fde68a" class="flame-anim" style="animation-delay:0.25s"/>
+              <ellipse cx="108.5" cy="36" rx="6" ry="10" fill="#fde68a" class="flame-anim" style="animation-delay:0.5s"/>
+              <ellipse cx="124.5" cy="33" rx="6" ry="10" fill="#fde68a" class="flame-anim" style="animation-delay:0.75s"/>
+              <!-- Inner flame glow -->
+              <ellipse cx="76.5" cy="38" rx="3" ry="5" fill="#fbbf24" class="flame-anim"/>
+              <ellipse cx="92.5" cy="31" rx="3" ry="6" fill="#fbbf24" class="flame-anim" style="animation-delay:0.25s"/>
+              <ellipse cx="108.5" cy="38" rx="3" ry="5" fill="#fbbf24" class="flame-anim" style="animation-delay:0.5s"/>
+              <ellipse cx="124.5" cy="35" rx="3" ry="5" fill="#fbbf24" class="flame-anim" style="animation-delay:0.75s"/>
+            </svg>
+          </div>
+
+          <!-- Motu celebrating -->
+          <div class="final-motu">
+            <svg viewBox="0 0 110 180" xmlns="http://www.w3.org/2000/svg" class="char-svg">
+              <path d="M18 100 Q14 158 55 165 Q96 158 92 100 Z" fill="#c084fc"/>
+              <rect x="30" y="85" width="50" height="38" rx="14" fill="#c084fc"/>
+              <rect x="24" y="116" width="62" height="9" rx="5" fill="#a855f7"/>
+              <!-- Arms raised celebrating -->
+              <rect x="4" y="88" width="24" height="12" rx="6" fill="#c084fc" transform="rotate(42 4 88)"/>
+              <rect x="82" y="88" width="24" height="12" rx="6" fill="#c084fc" transform="rotate(-42 106 88)"/>
+              <!-- Hands -->
+              <ellipse cx="10" cy="72" rx="10" ry="10" fill="#f9d4a0"/>
+              <ellipse cx="100" cy="72" rx="10" ry="10" fill="#f9d4a0"/>
+              <!-- Neck -->
+              <rect x="47" y="72" width="16" height="18" rx="7" fill="#f9d4a0"/>
+              <!-- Head -->
+              <ellipse cx="55" cy="56" rx="30" ry="28" fill="#f9d4a0"/>
+              <!-- Long flowing hair -->
+              <ellipse cx="55" cy="33" rx="30" ry="14" fill="#6b21a8"/>
+              <rect x="25" y="27" width="60" height="24" rx="10" fill="#6b21a8"/>
+              <path d="M25 46 Q16 76 22 102" stroke="#6b21a8" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <path d="M85 46 Q94 76 88 102" stroke="#6b21a8" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <!-- Hair shimmer -->
+              <path d="M25 27 Q18 50 22 72" stroke="#7c3aed" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+              <!-- Party hat -->
+              <polygon points="55,8 36,38 74,38" fill="#fbbf24"/>
+              <circle cx="55" cy="8" r="4" fill="#f472b6"/>
+              <line x1="36" y1="38" x2="74" y2="38" stroke="#f472b6" stroke-width="3"/>
+              <!-- Hair accessory -->
+              <circle cx="78" cy="34" r="8" fill="#f472b6"/>
+              <circle cx="78" cy="34" r="4" fill="#fbbf24"/>
+              <!-- Eyes - happy crescents -->
+              <path d="M38 55 Q45 48 52 55" stroke="#1e1b4b" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M58 55 Q65 48 72 55" stroke="#1e1b4b" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Big smile -->
+              <path d="M38 68 Q55 82 72 68" stroke="#c0392b" stroke-width="2.5" fill="#e74c3c" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <ellipse cx="32" cy="62" rx="8" ry="6" fill="#f9a8d4" opacity="0.6"/>
+              <ellipse cx="78" cy="62" rx="8" ry="6" fill="#f9a8d4" opacity="0.6"/>
+            </svg>
+            <p class="char-label-final">Motu 🌸</p>
+          </div>
+        </div><!-- /final-scene -->
+
+        <div class="final-messages">
+          <p class="final-msg-1">Stay happy, stay blessed and keep being the amazing person you are!</p>
+          <p class="final-msg-2">May all your dreams come true. Keep smiling and shining always! ✨</p>
+          <div class="final-signature">
+            <p class="sig-from">With lots of duas and best wishes,</p>
+            <p class="sig-name">YOUR BHAIYOO ❤️</p>
+          </div>
+        </div>
+
+        <button class="replay-btn" onclick="replayExperience()">
+          Experience The Surprise Again 🔄
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRANSITION OVERLAY ========== -->
+  <div class="transition-overlay" id="transitionOverlay"></div>
+
+  <!-- ========== CONFETTI CANVAS ========== -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
